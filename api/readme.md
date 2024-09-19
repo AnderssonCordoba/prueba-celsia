@@ -47,7 +47,7 @@ Para desplegar la aplicación:
 2. Inicia los contenedores:
    docker-compose up -d
 
-La API estará disponible en `http://localhost:3000`.
+La API estará disponible en `http://localhost:3500`.
 
 ## Detener la aplicación
 
