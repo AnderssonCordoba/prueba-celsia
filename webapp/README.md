@@ -21,8 +21,8 @@ Este proyecto implementa la interfaz de usuario para el proceso de venta de serv
 ## Configuración
 
 1. Clona este repositorio:
-   git clone https://github.com/<repositorio>
-   cd celsia-internet-frontend
+   git clone https://github.com/AnderssonCordoba/prueba-celsia.git
+   cd webapp
 
 2. Instala las dependencias:
    npm install

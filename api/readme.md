@@ -19,8 +19,8 @@ Este proyecto implementa una API para el proceso de venta de servicios de intern
 ## Configuración
 
 1. Clona este repositorio:
-   git clone https://github.com/<repositorio>
-   cd celsia-internet-api
+   git clone https://github.com/AnderssonCordoba/prueba-celsia.git
+   cd api
 
 2. Instala las dependencias:
    npm install
