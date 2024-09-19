@@ -110,31 +110,69 @@ Para el desarrollo de la prueba teórica, tendrás que escribir tus respuestas e
 
 - RTA:
 
-  2.3. ¿Qué estrategia de escalabilidad recomendarías para la aplicación considerando que el crecimiento proyectado será de 1,000,000 de clientes por año?
+  - Para la protección de los datos implementaría de autentificación mediante de un JWT, de igual forma agregaría un limite de tiempo al mismo haciendo que requiera de un refreshToken
+
+  - Implementaría un sistema de roles (usuarios administrativos y usuarios clientes) que según los roles se asignarían rutas protegidas, rutas publicas, acciones y permisos de usuarios para gestionar la data mas confidencial.
+
+  - Implementaría un cifrado de parámetros por enviados por url, como el DNS, principalmente para proteger la privacidad de las consultas DNS y evitar la manipulación de datos
+
+    2.3. ¿Qué estrategia de escalabilidad recomendarías para la aplicación considerando que el crecimiento proyectado será de 1,000,000 de clientes por año?
 
 - RTA:
 
-  2.4. ¿Qué patrón o patrones de diseño recomendarías para esta solución y cómo se implementarían? (Justifique)
+  - Priemero seria cambiar la arquitectura y cambiarla a una basada en microservicios bajo el patron de un apigatewat centralizado.
+
+  - Implementar un API Gateway para gestionar las solicitudes de los clientes y enrutar las solicitudes a los microservicios adecuados. Esto también puede ayudar con la autenticación, autorización, y balanceo de carga.
+
+  - Utilizar balanceadores de carga para distribuir el tráfico entre múltiples instancias de servicios. Esto puede ayudar a evitar que cualquier instancia individual se sobrecargue.
+
+  - Para el despliegue usaria servicios en la nube como AWS, Azure, y Google Cloud ofrecen capacidades de autoescalado.
+
+    2.4. ¿Qué patrón o patrones de diseño recomendarías para esta solución y cómo se implementarían? (Justifique)
 
 - RTA:
 
-  2.5. ¿Qué recomendaciones harías para optimizar el manejo y la persistencia de datos de la aplicación, teniendo en cuenta que esta aplicación tiene una alta transaccionalidad?
+  - Usaria el patron de apigateway centralizado: Teniendo en cuenta que este patrón se orienta a una arquitectura de microservicios, la cual recomendé para casos de escalabilidad en el punto anterior, me inclinaría por este patrón de diseño ya que actúa como un único punto de entrada para todas las solicitudes a los microservicios. Gestiona el enrutamiento, la autenticación, la autorización y el balanceo de carga.
+
+    2.5. ¿Qué recomendaciones harías para optimizar el manejo y la persistencia de datos de la aplicación, teniendo en cuenta que esta aplicación tiene una alta transaccionalidad?
 
 - RTA:
+
+  - Primero sería la elección de una base de datos, teniendo en cuenta los deseos de escalabilidad optaría por una base de datos NoSQL como MongoDb
+
+  - después buscaría la forma de implementar sharding para dividir la base de datos en fragmentos más pequeños y manejables. Cada fragmento puede residir en un servidor diferente, lo que mejora la escalabilidad y el rendimiento.
+
+  - de igual forma implementaría redis para reducir la carga en la base de datos y mejorar el rendimiento de la aplicación.
 
 # 3. Redes
 
 3.1. Explica la diferencia entre un router y un switch. ¿Cuándo usarías cada uno?
 
-- RTA:
+    - RTA:
+    - Un router está enfocado en conectar diferente redes entre ellas, como la del hogar y el internet, mientras que el switch se enfoca a conectar varios dispositivos dentro de una misma red, como una oficina con varias computadoras que quieren acceder a internet.
 
-  3.2. Describe las siete capas del modelo OSI y menciona brevemente la función principal de cada una
+    - Un router proporciona direcciones IP y un switch proporciona direcciones MAC
+
+    - Un router opera en la capa de red del modelo OSI (capa 3) y un switch opera en la capa de renlace de datos del modelo OSI (Capa 2)
+
+3.2. Describe las siete capas del modelo OSI y menciona brevemente la función principal de cada una
 
 - RTA:
+  1- Capa Física: Transmisión de datos brutos a través de un medio físico (cables, señales eléctricas).
+  2- Capa de Enlace de Datos: Proporciona comunicación libre de errores entre nodos en la misma red (por ejemplo, Ethernet).
+  3- Capa de Red: Se encarga del enrutamiento y direccionamiento (por ejemplo, IP).
+  4- Capa de Transporte: Proporciona transferencia de datos de extremo a extremo (TCP, UDP).
+  5- Capa de Sesión: Maneja sesiones de comunicación entre aplicaciones.
+  6- Capa de Presentación: Traduce los datos entre el formato de la red y el formato de la aplicación.
+  7- Capa de Aplicación: Proporciona servicios de red a las aplicaciones de usuario.
 
   3.3. Explica las diferencias entre los protocolos TCP y UDP. Dar un ejemplo de cuándo usarías cada uno?
 
 - RTA:
+
+  - El protocolo TCP es un protocolo orientado a la conexión, garantiza la entrega de datos y control de flujo, lo que significa que establece una conexión entre el emisor y el receptor antes de enviar datos. Mientras que el Protocolo UDP no establece una conexión previa y simplemente envía los datos sin asegurarse de que el receptor esté listo o que los datos lleguen correctamente, por ende utiliza menos ancho de banda, ya que no tiene la sobrecarga de establecer conexiones o de garantizar la entrega.
+
+  - El TCP se usaría en casos donde se requiera preservar la integridad de los datos, como en correos electrónicos, transferencias de archivos o navegación web. Mientras el UDP se usaría en casos donde requiera mayor velocidad, como los servicios de streaming.
 
   3.4. ¿Qué es una máscara de subred y cómo se utiliza para dividir una red en subredes más pequeñas?
 
