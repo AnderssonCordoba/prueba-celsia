@@ -1,0 +1,31 @@
+### Crear un nuevo servicio
+POST http://localhost:3000/api/servicios
+Content-Type: application/json
+
+{
+  "identificacion": "1234567890", // identificación del cliente ya registrado
+  "servicio": "Directv Go",
+  "fechaInicio": "2024-08-19",
+  "ultimaFacturacion": "2024-08-19",
+  "ultimoPago": 100
+}
+
+### Obtener todos los servicios
+GET http://localhost:3000/api/servicios
+Accept: application/json
+
+### Obtener servicios por identificación del cliente
+GET http://localhost:3000/api/servicios/cliente/1234567890
+Accept: application/json
+
+### Actualizar un servicio existente
+PUT http://localhost:3000/api/servicios/1234567890/Directv%20Go
+Content-Type: application/json
+
+{
+  "identificacion": "1234567890",
+  "servicio": "Directv Go",
+  "fechaInicio": "2024-08-20",
+  "ultimaFacturacion": "2024-08-20",
+  "ultimoPago": 150
+}

@@ -1,0 +1,42 @@
+### Crear un nuevo cliente
+POST http://localhost:3000/api/clientes
+Content-Type: application/json
+
+{
+  "identificacion": "1234567890",
+  "nombres": "Juan",
+  "apellidos": "Pérez",
+  "tipoIdentificacion": "CC",
+  "fechaNacimiento": "1990-01-01",
+  "numeroCelular": "3174320208",
+  "correoElectronico": "juan.perez@example.com"
+}
+
+### Obtener todos los clientes
+GET http://localhost:3000/api/clientes
+Accept: application/json
+
+### Obtener un cliente por ID
+GET http://localhost:3000/api/clientes/1234567890
+Accept: application/json
+
+### Actualizar un cliente
+PUT http://localhost:3000/api/clientes/1234567890
+Content-Type: application/json
+{
+  "identificacion": "1234567890",
+  "nombres": "Juan",
+  "apellidos": "Cambiado",
+  "tipoIdentificacion": "CC",
+  "fechaNacimiento": "1990-01-01",
+  "numeroCelular": "3174320208",
+  "correoElectronico": "juan.perez@example.com"
+}
+
+### Eliminar un cliente
+DELETE http://localhost:3000/api/clientes/1234567890
+Accept: application/json
+
+### Obtener un cliente y sus servicios
+GET http://localhost:3000/api/clientes/1234567890/servicios
+Accept: application/json
